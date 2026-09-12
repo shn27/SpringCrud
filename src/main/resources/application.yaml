@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: SpringCrud
+  profiles:
+    active: dev
+  # 1. Database Connection Settings
+  datasource:
+    url: jdbc:postgresql://localhost:5432/StudentManagementSystem
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  # 2. JPA & Hibernate Configurations
+  jpa:
+    # Controls automatic table creation (none, validate, update, create, create-drop)
+    # Use 'update' or 'create' for local testing, 'validate' or 'none' for production.
+    hibernate:
+      ddl-auto: update
+
+    # Shows the exact SQL queries in your console logs
+    show-sql: true
+
+    properties:
+      hibernate:
+        # Formats the SQL in the logs so it is easy to read
+        format_sql: true
+
+        # Specifies your database type (helps Hibernate optimize SQL queries)
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
+
+# 3. Optional: Logging configuration to see SQL bind parameters
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: trace
